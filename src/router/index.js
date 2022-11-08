@@ -1,20 +1,35 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import MainView from "../views/MainView.vue";
+import AboutView from "../views/AboutView.vue";
+import ReferView from "../views/ReferView.vue";
+import YoutubeView from "../views/YoutubeView.vue";
+import UnsplashView from "../views/UnsplashView.vue";
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
+    name: "main",
+    component: MainView,
   },
   {
-    path: "/about",
+    path: "/About",
     name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    component: AboutView,
+  },
+  {
+    path: "/Reference",
+    name: "refer",
+    component: ReferView,
+  },
+  {
+    path: "/Youtube",
+    name: "youtube",
+    component: YoutubeView,
+  },
+  {
+    path: "/Unsplash",
+    name: "unsplash",
+    component: UnsplashView,
   },
 ];
 
