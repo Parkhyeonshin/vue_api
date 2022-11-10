@@ -5,7 +5,44 @@
     <section class="cont__refer">
       <div class="container">
         <div class="movie__inner">
-          <div class="movie__slider"></div>
+          <div class="movie__slider">
+            <swiper
+              :effect="'coverflow'"
+              :grabCursor="true"
+              :centeredSlides="true"
+              :autoplay="{
+                delay: 2500,
+                disableOnInteraction: false,
+              }"
+              :slidesPerView="'auto'"
+              :initialSlide="5"
+              :coverflowEffect="{
+                rotate: 390,
+                stretch: 0,
+                depth: 400,
+                modifier: 1,
+                slideShadows: false,
+              }"
+              :pagination="{
+                clickable: true,
+              }"
+              :modules="modules"
+              class="mySwiper"
+            >
+              <swiper-slide v-for="(slider, index) in sliders" :key="slider.id">
+                <a :href="`https://image.tmdb.org/movie/${slider.id}`">
+                  <img
+                    :src="`https://image.tmdb.org/t/p/w500/${slider.poster_path}`"
+                    :alt="slider.title"
+                  />
+                  <em>
+                    <span class="title">{{ slider.title }}</span>
+                    <span class="star">{{ index + 1 }}위</span>
+                  </em>
+                </a>
+              </swiper-slide>
+            </swiper>
+          </div>
           <div class="movie__search">
             <div className="container">
               <h2>검색하기</h2>
@@ -24,7 +61,7 @@
               <div class="movie__list">
                 <ul>
                   <li v-for="movie in movies" :key="movie.id">
-                    <a href="">
+                    <a :href="`https://image.tmdb.org/movie/${movie.id}`">
                       <img
                         :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"
                         :alt="movie.title"
@@ -52,12 +89,22 @@ import TitleCont from "@/components/TitleCont.vue";
 import FooterCont from "@/components/FooterCont.vue";
 import ContactCont from "@/components/ContactCont.vue";
 import { ref } from "vue";
+
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import { Autoplay, EffectCoverflow, Pagination } from "swiper";
+
 export default {
   components: {
     HeaderCont,
     FooterCont,
     TitleCont,
     ContactCont,
+    Swiper,
+    SwiperSlide,
   },
 
   setup() {
@@ -92,6 +139,8 @@ export default {
       sliders,
       search,
       SearchMovies,
+      TopMovies,
+      modules: [Autoplay, EffectCoverflow, Pagination],
     };
   },
 };
@@ -238,6 +287,52 @@ export default {
       color: var(--white);
       cursor: pointer;
     }
+  }
+}
+.movie__slider {
+  .swiper-slide {
+    width: 29%;
+    img {
+      border-radius: 20px;
+      &:hover {
+        border: 4px solid orange !important;
+        filter: brightness(140%);
+      }
+    }
+  }
+  .swiper-wrapper {
+    margin-bottom: 60px;
+
+    .swiper-slide-active img {
+      border: 4px solid var(--black);
+    }
+  }
+
+  em {
+    display: block;
+    // height: 80px;
+    // margin-bottom: 30px;
+    font-family: var(--font-kor);
+    color: var(--black);
+    text-align: center;
+  }
+  .title {
+    padding: 5px 0;
+    display: inline-block;
+  }
+  .star {
+    background: var(--black);
+    color: var(--white);
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 50px;
+    height: 30px;
+    border-radius: 20px;
+    border: 2px solid var(--black);
+    text-align: center;
+    line-height: 26px;
+    font-weight: 700;
   }
 }
 </style>
