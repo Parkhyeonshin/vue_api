@@ -6,6 +6,7 @@
       <div class="container">
         <div class="movie__inner">
           <div class="movie__slider">
+            <div class="movie__popname">인기 순위</div>
             <swiper
               :effect="'coverflow'"
               :grabCursor="true"
@@ -249,7 +250,7 @@ export default {
 }
 
 .movie__search {
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 
   .container {
     position: relative;
@@ -290,6 +291,18 @@ export default {
   }
 }
 .movie__slider {
+  margin-bottom: 45px;
+  border-bottom: 2px solid var(--black);
+  padding-bottom: 30px;
+  .movie__popname {
+    color: var(--balck);
+    font-size: 25px;
+    margin: 0 auto;
+    width: fit-content;
+    margin-bottom: 20px;
+    text-decoration: underline;
+    text-underline-position: under;
+  }
   .swiper-slide {
     width: 29%;
     img {
@@ -301,7 +314,7 @@ export default {
     }
   }
   .swiper-wrapper {
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 
     .swiper-slide-active img {
       border: 4px solid var(--black);
@@ -333,6 +346,13 @@ export default {
     text-align: center;
     line-height: 26px;
     font-weight: 700;
+  }
+  .swiper-pagination-bullet-active {
+    background: var(--black);
+    transform: scale(1.3);
+  }
+  .swiper-pagination-bullet {
+    transition: all 0.5s ease-in;
   }
 }
 </style>
