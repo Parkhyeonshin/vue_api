@@ -93,7 +93,8 @@
       bottom: 0;
       width: 100%;
       height: 1px;
-      background: var(--white);
+      // background: var(--black);
+      background: rgb(136, 136, 136);
       transform: scaleX(0);
       transition: all 0.3s ease;
     }

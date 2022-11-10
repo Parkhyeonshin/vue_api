@@ -1,9 +1,9 @@
 <template>
   <div>
     <HeaderCont />
-    <TitleCont />
-    <ContactCont />
+    <TitleCont name1="About" name2="api" />
     <FooterCont />
+    <ContactCont />
   </div>
 </template>
 <script>
