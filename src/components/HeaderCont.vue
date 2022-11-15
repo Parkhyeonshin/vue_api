@@ -45,6 +45,7 @@
     display: inline-block;
     position: relative;
     margin: 5px 12px 12px 12px;
+    line-height: 1;
 
     &::before {
       content: "";
