@@ -273,7 +273,7 @@ export default {
   }
   button {
     position: absolute;
-    top: 7px;
+    top: 8px;
     right: 10px;
     border-radius: 20px;
     width: 50px;
